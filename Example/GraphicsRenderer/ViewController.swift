@@ -30,9 +30,6 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let url = try? FileManager.default.url(for: .documentDirectory, in: .userDomainMask, appropriateFor: nil, create: true)
-        let imageUrl = url!.appendingPathComponent("image.svg")
-        
         let renderer = SVGRenderer(size: CGSize(width: 24, height: 24))
         let string = renderer.svgString { context in
             let path = context.cgContext
