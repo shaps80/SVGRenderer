@@ -11,6 +11,6 @@
 #endif
 
 
-FOUNDATION_EXPORT double GraphicsRendererVersionNumber;
-FOUNDATION_EXPORT const unsigned char GraphicsRendererVersionString[];
+FOUNDATION_EXPORT double SVGRendererVersionNumber;
+FOUNDATION_EXPORT const unsigned char SVGRendererVersionString[];
 

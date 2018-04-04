@@ -2,7 +2,7 @@
 <Workspace
    version = "1.0">
    <FileRef
-      location = "group:/Users/shaps/Documents/Development/Personal/Swift/SVGRenderer/Example/SVGRenderer.xcodeproj">
+      location = "group:SVGRenderer.xcodeproj">
    </FileRef>
    <FileRef
       location = "group:Pods/Pods.xcodeproj">

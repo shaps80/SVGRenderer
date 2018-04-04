@@ -1,5 +1,5 @@
 #ifdef __OBJC__
-#import <UIKit/UIKit.h>
+#import <Cocoa/Cocoa.h>
 #else
 #ifndef FOUNDATION_EXPORT
 #if defined(__cplusplus)
@@ -11,6 +11,6 @@
 #endif
 
 
-FOUNDATION_EXPORT double GraphicsRendererVersionNumber;
-FOUNDATION_EXPORT const unsigned char GraphicsRendererVersionString[];
+FOUNDATION_EXPORT double SVGRendererVersionNumber;
+FOUNDATION_EXPORT const unsigned char SVGRendererVersionString[];
 

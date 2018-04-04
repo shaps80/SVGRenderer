@@ -1,0 +1,6 @@
+framework module SVGRenderer {
+  umbrella header "SVGRenderer-iOS-umbrella.h"
+
+  export *
+  module * { export * }
+}

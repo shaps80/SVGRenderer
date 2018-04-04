@@ -21,7 +21,7 @@
  */
 
 import UIKit
-import GraphicsRenderer
+import SVGRenderer
 
 class ViewController: UIViewController {
     
@@ -31,37 +31,28 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         
         let url = try? FileManager.default.url(for: .documentDirectory, in: .userDomainMask, appropriateFor: nil, create: true)
-        let docURL = url!.appendingPathComponent("doc.pdf")
+        let imageUrl = url!.appendingPathComponent("image.svg")
         
-        try? PDFRenderer(bounds: CGRect(x: 0, y: 0, width: 612, height: 792)).writePDF(to: docURL) { context in
-            context.beginPage()
-            performDrawing(context: context)
-            context.beginPage()
-            performDrawing(context: context)
+        let renderer = SVGRenderer(size: CGSize(width: 24, height: 24))
+        let string = renderer.svgString { context in
+            let path = context.cgContext
+            
+            path.move(to: CGPoint(x: 12, y: 19.5))
+            path.curve(to: CGPoint(x: 20.08, y: 13.63), controlPoint1: CGPoint(x: 12, y: 19.5), controlPoint2: CGPoint(x: 20.08, y: 13.63))
+            path.line(to: CGPoint(x: 17, y: 4.12))
+            path.line(to: CGPoint(x: 14.87, y: 4.12))
+            path.curve(to: CGPoint(x: 15, y: 5), controlPoint1: CGPoint(x: 14.95, y: 4.4), controlPoint2: CGPoint(x: 15, y: 4.69))
+            path.curve(to: CGPoint(x: 12, y: 8), controlPoint1: CGPoint(x: 15, y: 6.66), controlPoint2: CGPoint(x: 13.66, y: 8))
+            path.curve(to: CGPoint(x: 9, y: 5), controlPoint1: CGPoint(x: 10.34, y: 8), controlPoint2: CGPoint(x: 9, y: 6.66))
+            path.curve(to: CGPoint(x: 9.13, y: 4.12), controlPoint1: CGPoint(x: 9, y: 4.69), controlPoint2: CGPoint(x: 9.05, y: 4.4))
+            path.line(to: CGPoint(x: 7, y: 4.12))
+            path.line(to: CGPoint(x: 3.92, y: 13.63))
+            path.line(to: CGPoint(x: 12, y: 19.5))
+            path.line(to: CGPoint(x: 12, y: 19.5))
+            path.close()
         }
         
-        print("PDF saved to: \(docURL)")
-        
-        let format = ImageRendererFormat.default()
-        let image = ImageRenderer(size: CGSize(width: 100, height: 100), format: format).image { context in
-            performDrawing(context: context)
-        }
-        
-        imageView.image = image
-    }
-    
-    private func performDrawing<Context: RendererContext>(context: Context) {
-        let rect = context.format.bounds
-        
-        UIColor.white.setFill()
-        context.fill(rect)
-        
-        UIColor.blue.setStroke()
-        let frame = CGRect(x: 10, y: 10, width: 40, height: 40)
-        context.stroke(frame)
-        
-        UIColor.red.setStroke()
-        context.stroke(rect.insetBy(dx: 5, dy: 5))
+        print(string)
     }
     
 }

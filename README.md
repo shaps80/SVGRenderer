@@ -1,72 +1,30 @@
-# GraphicsRenderer
+# SVGRenderer
 
 [![Carthage compatible](https://img.shields.io/badge/Carthage-✓-4BC51D.svg?style=flat)](https://github.com/Carthage/Carthage)
-[![Version](https://img.shields.io/cocoapods/v/GraphicsRenderer.svg?style=flat)](http://cocoapods.org/pods/GraphicsRenderer)
-[![License](https://img.shields.io/cocoapods/l/GraphicsRenderer.svg?style=flat)](http://cocoapods.org/pods/GraphicsRenderer)
-[![Language](https://img.shields.io/badge/language-swift_3.0-ff69b4.svg)](http://cocoadocs.org/docsets/GraphicsRenderer)
-[![Platform](https://img.shields.io/cocoapods/p/GraphicsRenderer.svg?style=flat)](http://cocoapods.org/pods/GraphicsRenderer)
+[![Version](https://img.shields.io/cocoapods/v/SVGRenderer.svg?style=flat)](http://cocoapods.org/pods/SVGRenderer)
+[![License](https://img.shields.io/cocoapods/l/SVGRenderer.svg?style=flat)](http://cocoapods.org/pods/SVGRenderer)
+[![Language](https://img.shields.io/badge/language-swift_4.0-ff69b4.svg)](http://cocoadocs.org/docsets/SVGRenderer)
+[![Platform](https://img.shields.io/cocoapods/p/SVGRenderer.svg?style=flat)](http://cocoapods.org/pods/SVGRenderer)
 
 ## Installation
-
-### Swift 4
 
 **Cocoapods**
 
 ```ruby
-pod "GraphicsRenderer", "1.2.0"
+pod "SVGRenderer", "1.0.0"
 ```
 
 **Carthage**
 
 ```ruby
-github "shaps80/GraphicsRenderer" ~> 1.2.1
-```
-
-### Swift 3
-```ruby
-pod "GraphicsRenderer", "1.1.0"
-```
-
-### Swift 2.3
-```ruby
-pod "GraphicsRenderer", "1.0.0"
+github "shaps80/SVGRenderer" ~> 1.0.0
 ```
 
 ## Introduction
 
 <img src="sample.png" />
 
-GraphicsRenderer is designed to a drop-in UIGraphicsRenderer port. For this reason, all function names are matched to make it easy to swap out a later date.
-
-```swift
-UIGraphicsRendererFormat > RendererFormat
-UIGraphicsImageRendererFormat > ImageRendererFormat
-UIGraphicsPDFRendererFormat > PDFRendererFormat
-
-UIGraphicsRendererContext > RendererContext
-UIGraphicsImageRendererContext > ImageRendererContext
-UIGraphicsPDFRendererContext > PDFRendererContext
-```
-
-The classes you'll mostly work with though are:
-
-```swift
-UIGraphicsRenderer > Renderer
-UIGraphicsImageRenderer > ImageRenderer
-UIGraphicsPDFRenderer > PDFRenderer
-```
-
-GraphicsRenderer is also cross-platform with iOS and macOS demo projects included in the repo.
-
-GraphicsRenderer matches the entire API currently available from UIGraphicsRenderer, however to make it work nicely with all platforms, it also includes some additional convenience's, like `flipping` the `context`. 
-
-GraphicsRenderer is also protocol based, which makes it more Swifty and allows for some nice generics driven integration as you can see in the `performDrawing()` example.
-
-## InkKit
-
-I have another library called <a href="http://github.com/shaps80/InkKit">InkKit</a> which now uses this library for its inner workings. For a LOT more drawing and layout convenience's -- checkout that library too.~~
-
-Note: If you include InkKit in your project, you don't need to include this project too.
+SVGRenderer is also cross-platform with iOS and macOS demo projects included in the repo. 
 
 ## Example
 
@@ -91,44 +49,11 @@ func performDrawing<Context: RendererContext>(context: Context) {
 }
 ```
 
-Now lets create an image from this drawing:
-
-```swift
-let image = ImageRenderer(size: CGSize(width: 100, height: 100)).image { context in
-	performDrawing()
-}
-```
-
-Or perhaps you'd prefer a PDF?
-
-```swift
-let bounds = CGRect(x: 0, y: 0, width: 612, height: 792)
-try? PDFRenderer(bounds: bounds).writePDF(to: url) { context in
-    context.beginPage()
-    performDrawing(context: context)
-    context.beginPage()
-    performDrawing(context: context)
-}
-```
-
-## Drawing
-
-When working with PDFs you don't need to worry about creating the PDF, ending pages or even closing the PDF. This is all handled automatically for you.
-
-The `context` returned to you inside the drawing block holds onto 2 key pieces of information. (Just like `UIGraphicsRendererContext`)
-
-`format` -- Provides information about bounds, scale, etc..
-`cgContext` --  The underlying `CGContext`
-
-Final note, the `stroke` methods are optimized to work the same way as the Apple implementation, in that they automatically insetBy 0.5 for you. If you don't want this behavious automatically, simply use the usual methods available on `CGContext`. 
-
-e.g. `cgContext.stroke(rect: myRect)`
-
 ## Requirements
 
 The library has the following requirements:
 
-* Swift 3.0
+* Swift 4.0+
 * iOS 8.0+
 * OSX 10.10+
 
@@ -138,4 +63,4 @@ Shaps Benkau, shapsuk@me.com
 
 ## License
 
-GraphicsRenderer is available under the MIT license. See the LICENSE file for more info.
+SVGRenderer is available under the MIT license. See the LICENSE file for more info.

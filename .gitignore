@@ -13,13 +13,32 @@ build/
 !default.perspectivev3
 xcuserdata/
 *.xccheckout
-profile
 *.moved-aside
 DerivedData
 *.hmap
 *.ipa
 
+upload_dsym_results
+
 # Bundler
 .bundle
 
-Carthage
+Design/
+
+report.xml
+release_notes
+output
+README.md
+test_results
+slather_output
+
+## Calabash screenshots and report
+#calabash/*.json
+calabash/**/*.jpg
+calabash/**/*.png
+
+## Build generated
+build/
+DerivedData
+release_notes.md
+nrdSYM.zip
