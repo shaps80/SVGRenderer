@@ -50,6 +50,11 @@ class ViewController: NSViewController {
         }
         
         print(string)
+        
+        if let url = try? FileManager.default.url(for: .desktopDirectory, in: .userDomainMask, appropriateFor: nil, create: true) {
+            let imageUrl = url.appendingPathComponent("image.svg")
+            try? string.data(using: .utf8)?.write(to: imageUrl)
+        }
     }
 
 }

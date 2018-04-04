@@ -139,12 +139,9 @@ public final class SVGRenderer: Renderer {
         let fillRule = context.cgContext.usesEvenOddFillRule ? "evenodd" : "nonzero"
         
         return """
-        <?xml version="1.0" encoding="UTF-8"?>
-        <svg width="\(format.bounds.width)px" height="\(format.bounds.height)px" viewBox="\(viewBox)" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+        <svg width="\(format.bounds.width)px" height="\(format.bounds.height)px" viewBox="\(viewBox)" xmlns="http://www.w3.org/2000/svg">
         <!-- Generator: SVGRenderer (1.0.0) - http://github.com/shaps80/SVGRenderer -->
-        <g id="SVGRenderer" fill="#7F7F7F" fill-rule="\(fillRule)">
-        <path d=\"\(svgContext.cgPath.svgString())\"></path>
-        </g>
+        <path fill="#7F7F7F" fill-rule="\(fillRule)" d=\"\(svgContext.cgPath.svgString())\"></path>
         </svg>
 
         """
