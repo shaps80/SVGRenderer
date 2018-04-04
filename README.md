@@ -39,10 +39,13 @@ print(string)
 
 **Output**
 
-
-<svg width="50.0px" height="50.0px" viewBox="0.0 0.0 50.0 50.0">
+```svg
+<svg width="50.0px" height="50.0px" viewBox="0.0 0.0 50.0 50.0" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="SVGRenderer" fill="#7F7F7F" fill-rule="nonzero">
 <path d="M0.0,0.0 L0.0,0.0 L0.0,0.0 L0.0,0.0 Z M24.9,6.5 C24.89,6.5,44.5,20.63,44.5,20.63 L37.01,43.5 L31.85,43.5 C32.06,42.83,32.17,42.12,32.17,41.39 C32.17,37.4,28.91,34.17,24.89,34.17 C20.87,34.17,17.62,37.4,17.62,41.39 C17.62,42.12,17.73,42.83,17.93,43.5 L12.77,43.5 L5.92,20.63 L24.89,6.5 L24.9,6.5 Z M24.9,6.5"></path>
+</g>
 </svg>
+```
 
 ## Getting Started
 
