@@ -30,8 +30,7 @@ class ViewController: NSViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let renderer = SVGRenderer(size: CGSize(width: 50, height: 50))
-        let string = renderer.svgString { context in
+        let string = SVGRenderer(size: CGSize(width: 50, height: 50)).svgString { context in
             let frame = context.format.bounds
             let path = context.cgContext
             
