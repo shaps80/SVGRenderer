@@ -22,6 +22,7 @@
 
 import Cocoa
 import SVGRenderer
+import GraphicsRenderer
 
 class ViewController: NSViewController {
     
@@ -32,29 +33,45 @@ class ViewController: NSViewController {
         
         let string = SVGRenderer(size: CGSize(width: 50, height: 50)).svgString { context in
             let frame = context.format.bounds
-            let path = context.cgContext
-            
-            path.move(to: NSPoint(x: frame.minX + 24.9, y: frame.minY + 6.5))
-            path.curve(to: NSPoint(x: frame.minX + 44.5, y: frame.minY + 20.63), controlPoint1: NSPoint(x: frame.minX + 24.89, y: frame.minY + 6.5), controlPoint2: NSPoint(x: frame.minX + 44.5, y: frame.minY + 20.63))
-            path.line(to: NSPoint(x: frame.minX + 37.01, y: frame.minY + 43.5))
-            path.line(to: NSPoint(x: frame.minX + 31.85, y: frame.minY + 43.5))
-            path.curve(to: NSPoint(x: frame.minX + 32.17, y: frame.minY + 41.39), controlPoint1: NSPoint(x: frame.minX + 32.06, y: frame.minY + 42.83), controlPoint2: NSPoint(x: frame.minX + 32.17, y: frame.minY + 42.12))
-            path.curve(to: NSPoint(x: frame.minX + 24.89, y: frame.minY + 34.17), controlPoint1: NSPoint(x: frame.minX + 32.17, y: frame.minY + 37.4), controlPoint2: NSPoint(x: frame.minX + 28.91, y: frame.minY + 34.17))
-            path.curve(to: NSPoint(x: frame.minX + 17.62, y: frame.minY + 41.39), controlPoint1: NSPoint(x: frame.minX + 20.87, y: frame.minY + 34.17), controlPoint2: NSPoint(x: frame.minX + 17.62, y: frame.minY + 37.4))
-            path.curve(to: NSPoint(x: frame.minX + 17.93, y: frame.minY + 43.5), controlPoint1: NSPoint(x: frame.minX + 17.62, y: frame.minY + 42.12), controlPoint2: NSPoint(x: frame.minX + 17.73, y: frame.minY + 42.83))
-            path.line(to: NSPoint(x: frame.minX + 12.77, y: frame.minY + 43.5))
-            path.line(to: NSPoint(x: frame.minX + 5.92, y: frame.minY + 20.63))
-            path.line(to: NSPoint(x: frame.minX + 24.89, y: frame.minY + 6.5))
-            path.line(to: NSPoint(x: frame.minX + 24.9, y: frame.minY + 6.5))
+            let path = BezierPath()
+
+            path.move(to: CGPoint(x: frame.minX + 24.9, y: frame.minY + 6.5))
+            path.curve(to: CGPoint(x: frame.minX + 44.5, y: frame.minY + 20.63), controlPoint1: CGPoint(x: frame.minX + 24.89, y: frame.minY + 6.5), controlPoint2: CGPoint(x: frame.minX + 44.5, y: frame.minY + 20.63))
+            path.line(to: CGPoint(x: frame.minX + 37.01, y: frame.minY + 43.5))
+            path.line(to: CGPoint(x: frame.minX + 31.85, y: frame.minY + 43.5))
+            path.curve(to: CGPoint(x: frame.minX + 32.17, y: frame.minY + 41.39), controlPoint1: CGPoint(x: frame.minX + 32.06, y: frame.minY + 42.83), controlPoint2: CGPoint(x: frame.minX + 32.17, y: frame.minY + 42.12))
+            path.curve(to: CGPoint(x: frame.minX + 24.89, y: frame.minY + 34.17), controlPoint1: CGPoint(x: frame.minX + 32.17, y: frame.minY + 37.4), controlPoint2: CGPoint(x: frame.minX + 28.91, y: frame.minY + 34.17))
+            path.curve(to: CGPoint(x: frame.minX + 17.62, y: frame.minY + 41.39), controlPoint1: CGPoint(x: frame.minX + 20.87, y: frame.minY + 34.17), controlPoint2: CGPoint(x: frame.minX + 17.62, y: frame.minY + 37.4))
+            path.curve(to: CGPoint(x: frame.minX + 17.93, y: frame.minY + 43.5), controlPoint1: CGPoint(x: frame.minX + 17.62, y: frame.minY + 42.12), controlPoint2: CGPoint(x: frame.minX + 17.73, y: frame.minY + 42.83))
+            path.line(to: CGPoint(x: frame.minX + 12.77, y: frame.minY + 43.5))
+            path.line(to: CGPoint(x: frame.minX + 5.92, y: frame.minY + 20.63))
+            path.line(to: CGPoint(x: frame.minX + 24.89, y: frame.minY + 6.5))
+            path.line(to: CGPoint(x: frame.minX + 24.9, y: frame.minY + 6.5))
             path.close()
+
+            context.svgContext.fillColor = .darkGray
+//            context.svgContext.lineWidth = 1
+            context.svgContext.strokeColor = Color.red
+            context.svgContext.append(path)
+
+            context.svgContext.group(id: "head") { context in
+                let path = BezierPath(rect: CGRect(x: 0, y: 0, width: 20, height: 20))
+                context.append(path)
+            }
+
+            let image = context.currentImage
+            let filename = NSSearchPathForDirectoriesInDomains(.desktopDirectory, .userDomainMask, true).first!
+            let url = URL(fileURLWithPath: filename).appendingPathComponent("test.jpg")
+            let rep = NSBitmapImageRep(data: image.tiffRepresentation!)?.representation(using: .png, properties: [.compressionFactor: 1])
+            try? rep?.write(to: url)
         }
         
         print(string)
         
-        if let url = try? FileManager.default.url(for: .desktopDirectory, in: .userDomainMask, appropriateFor: nil, create: true) {
-            let imageUrl = url.appendingPathComponent("image.svg")
-            try? string.data(using: .utf8)?.write(to: imageUrl)
-        }
+//        if let url = try? FileManager.default.url(for: .desktopDirectory, in: .userDomainMask, appropriateFor: nil, create: true) {
+//            let imageUrl = url.appendingPathComponent("image.svg")
+//            try? string.data(using: .utf8)?.write(to: imageUrl)
+//        }
     }
 
 }

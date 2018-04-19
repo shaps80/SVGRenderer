@@ -20,6 +20,8 @@
 		3B1646B5BC38D27EC0F1D91B0411DBA9 /* Platforms.swift in Sources */ = {isa = PBXBuildFile; fileRef = 754005A00CF95BBA6A5ED1B062916AD2 /* Platforms.swift */; };
 		46ECC7968ADB42816BCBC399AA494812 /* Pods-MacOSRenderer-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = E8BF40628842DEB508B52A2625A7A740 /* Pods-MacOSRenderer-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		50DD13E498A7FCF3E6804B9DE2C60773 /* BezierPath+SVGString.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACA21F5DE8B299B67D3E4B7B992163F7 /* BezierPath+SVGString.swift */; };
+		541F6CB020891D510069A168 /* SVGContext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 541F6CAF20891D510069A168 /* SVGContext.swift */; };
+		541F6CB120891D510069A168 /* SVGContext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 541F6CAF20891D510069A168 /* SVGContext.swift */; };
 		5E09CE6C68AE73CE6E43907CB20DB84D /* RendererDrawable.swift in Sources */ = {isa = PBXBuildFile; fileRef = B857851D9033445D2EF8C184130D8E72 /* RendererDrawable.swift */; };
 		5E476F01775F8E7073E6DE40932796AF /* BezierPath+SVGContext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B201806EEBE6997BBBBB21F6B4EA2B5 /* BezierPath+SVGContext.swift */; };
 		69628C840C16D7E5F93F55CBBE9E65D8 /* Platforms.swift in Sources */ = {isa = PBXBuildFile; fileRef = 754005A00CF95BBA6A5ED1B062916AD2 /* Platforms.swift */; };
@@ -100,40 +102,41 @@
 		1812E9BD887401D7F17FC8EDE3C4E626 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; name = Info.plist; path = "../GraphicsRenderer-macOS/Info.plist"; sourceTree = "<group>"; };
 		1F195F19E187AE769E2DCD103129C6A9 /* Pods-MacOSRenderer-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-MacOSRenderer-acknowledgements.markdown"; sourceTree = "<group>"; };
 		21C67C5D2BCAD9889A4900E82EB136F4 /* SVGRenderer-macOS.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "SVGRenderer-macOS.xcconfig"; path = "../SVGRenderer-macOS/SVGRenderer-macOS.xcconfig"; sourceTree = "<group>"; };
-		278B64BE531AF3E36A5A4425616D4F92 /* Pods_MacOSRenderer.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_MacOSRenderer.framework; path = "Pods-MacOSRenderer.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
+		278B64BE531AF3E36A5A4425616D4F92 /* Pods_MacOSRenderer.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MacOSRenderer.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		2B201806EEBE6997BBBBB21F6B4EA2B5 /* BezierPath+SVGContext.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "BezierPath+SVGContext.swift"; path = "SVGRenderer/Classes/BezierPath+SVGContext.swift"; sourceTree = "<group>"; };
 		358D77CEA6CA6C365B53468105E676C7 /* GraphicsRenderer-iOS.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "GraphicsRenderer-iOS.xcconfig"; sourceTree = "<group>"; };
 		3D9011B61B2FA3BECFE8F676F8E172E0 /* SVGRenderer-macOS-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "SVGRenderer-macOS-prefix.pch"; path = "../SVGRenderer-macOS/SVGRenderer-macOS-prefix.pch"; sourceTree = "<group>"; };
-		3F7411E7553FCBEA7E3514F9BCCBCF07 /* SVGRenderer.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = SVGRenderer.framework; path = "SVGRenderer-iOS.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
+		3F7411E7553FCBEA7E3514F9BCCBCF07 /* SVGRenderer.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = SVGRenderer.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		436CE505582D63E90A166A1E72F187CD /* GraphicsRenderer-macOS-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "GraphicsRenderer-macOS-dummy.m"; path = "../GraphicsRenderer-macOS/GraphicsRenderer-macOS-dummy.m"; sourceTree = "<group>"; };
 		44018228E1E824D37B77D1B5312CEEEC /* Pods-iOSRenderer-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-iOSRenderer-acknowledgements.markdown"; sourceTree = "<group>"; };
 		495B9A82F597404293E06433EBF3F9C3 /* Pods-iOSRenderer.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = "Pods-iOSRenderer.modulemap"; sourceTree = "<group>"; };
 		5004190AF8EAFE5118436083C9C9E715 /* SVGRenderer-iOS.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = "SVGRenderer-iOS.modulemap"; sourceTree = "<group>"; };
 		52A1D4C7412142B6D24418DF63004420 /* Pods-MacOSRenderer-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-MacOSRenderer-resources.sh"; sourceTree = "<group>"; };
 		52A24C53C9A88C63671DF65C1E6BBEC3 /* Pods-MacOSRenderer-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-MacOSRenderer-acknowledgements.plist"; sourceTree = "<group>"; };
-		5C0BA2CB59022F29346EAC3599F0D35F /* SVGRenderer.podspec */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; lastKnownFileType = text; path = SVGRenderer.podspec; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		541F6CAF20891D510069A168 /* SVGContext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SVGContext.swift; sourceTree = "<group>"; };
+		5C0BA2CB59022F29346EAC3599F0D35F /* SVGRenderer.podspec */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; path = SVGRenderer.podspec; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		60DF9C1897CBEB10549CF6C6FA8AD4A2 /* Pods-iOSRenderer-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-iOSRenderer-resources.sh"; sourceTree = "<group>"; };
 		6357149D0658D04C6D216FC7F2C8DB9B /* Pods-MacOSRenderer.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-MacOSRenderer.release.xcconfig"; sourceTree = "<group>"; };
 		6430092520A27427C2B6810793A268A9 /* Pods-MacOSRenderer-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-MacOSRenderer-frameworks.sh"; sourceTree = "<group>"; };
 		6573441941294B718A5224025DEE5ED5 /* GraphicsRenderer-iOS-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "GraphicsRenderer-iOS-umbrella.h"; sourceTree = "<group>"; };
 		6B46117F62A6B7B2D6280436DF6A1423 /* SVGRenderer-iOS-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "SVGRenderer-iOS-dummy.m"; sourceTree = "<group>"; };
-		6F5790183DEAC329166CD65052D22AC3 /* GraphicsRenderer.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = GraphicsRenderer.framework; path = "GraphicsRenderer-iOS.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
-		6F62DCDE3A8A762312267086EF764BC1 /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; path = LICENSE; sourceTree = "<group>"; };
+		6F5790183DEAC329166CD65052D22AC3 /* GraphicsRenderer.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = GraphicsRenderer.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		6F62DCDE3A8A762312267086EF764BC1 /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
 		70A68E23D49BA7B06C49D49E29506F30 /* ImageRenderer.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ImageRenderer.swift; path = GraphicsRenderer/Classes/ImageRenderer.swift; sourceTree = "<group>"; };
 		754005A00CF95BBA6A5ED1B062916AD2 /* Platforms.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Platforms.swift; path = GraphicsRenderer/Classes/Platforms.swift; sourceTree = "<group>"; };
 		771D918D1CBFABFC88452B940A9B2C5E /* GraphicsRenderer-macOS-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "GraphicsRenderer-macOS-umbrella.h"; path = "../GraphicsRenderer-macOS/GraphicsRenderer-macOS-umbrella.h"; sourceTree = "<group>"; };
-		7BDB52CDEF39C0ADC822FFE406B7BA56 /* SVGRenderer.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = SVGRenderer.framework; path = "SVGRenderer-macOS.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
+		7BDB52CDEF39C0ADC822FFE406B7BA56 /* SVGRenderer.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = SVGRenderer.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		811EFFCA4AAC8C97114A5CC84C6AF03F /* Pods-MacOSRenderer.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = "Pods-MacOSRenderer.modulemap"; sourceTree = "<group>"; };
 		84B16EED88717A5EB1DCE7CCCD055E95 /* Pods-MacOSRenderer-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-MacOSRenderer-dummy.m"; sourceTree = "<group>"; };
 		86BFCF1EF16A41AFB0FEA844FC76066B /* Renderer.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Renderer.swift; path = GraphicsRenderer/Classes/Renderer.swift; sourceTree = "<group>"; };
 		871958B10DB5656914B53C5E1E3698BB /* GraphicsRenderer-macOS.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; name = "GraphicsRenderer-macOS.modulemap"; path = "../GraphicsRenderer-macOS/GraphicsRenderer-macOS.modulemap"; sourceTree = "<group>"; };
 		93652000A325EFC97A0EC948372A45AA /* GraphicsRenderer-macOS-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "GraphicsRenderer-macOS-prefix.pch"; path = "../GraphicsRenderer-macOS/GraphicsRenderer-macOS-prefix.pch"; sourceTree = "<group>"; };
-		93A4A3777CF96A4AAC1D13BA6DCCEA73 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; lastKnownFileType = text; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		93A4A3777CF96A4AAC1D13BA6DCCEA73 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		93BCAADF58645F355183DF97C189650E /* Pods-iOSRenderer-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-iOSRenderer-dummy.m"; sourceTree = "<group>"; };
 		9A98434DBAD61C5F8E313E5D43A23D53 /* Pods-iOSRenderer-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-iOSRenderer-umbrella.h"; sourceTree = "<group>"; };
 		9B53771538502C76D2C6DB3E04A4B302 /* SVGRenderer-iOS-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "SVGRenderer-iOS-umbrella.h"; sourceTree = "<group>"; };
 		A617E24B9C663C0ACF8E4A3B97032969 /* Pods-iOSRenderer-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-iOSRenderer-frameworks.sh"; sourceTree = "<group>"; };
-		AB57A4C310550C63CADFB474B62635B0 /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; path = README.md; sourceTree = "<group>"; };
+		AB57A4C310550C63CADFB474B62635B0 /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		ACA21F5DE8B299B67D3E4B7B992163F7 /* BezierPath+SVGString.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "BezierPath+SVGString.swift"; path = "SVGRenderer/Classes/BezierPath+SVGString.swift"; sourceTree = "<group>"; };
 		ADE34476931712A3CB2B46307848BF9F /* GraphicsRenderer-iOS.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = "GraphicsRenderer-iOS.modulemap"; sourceTree = "<group>"; };
 		B3371E964911EA42E9D348BCC3D26616 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS10.3.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
@@ -142,7 +145,7 @@
 		B8B208C12A2C914437413814F06E5BB4 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; name = Info.plist; path = "../SVGRenderer-macOS/Info.plist"; sourceTree = "<group>"; };
 		BBD9232F1D9353AD187D50F1ACC8A6CD /* SVGRenderer-macOS-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "SVGRenderer-macOS-dummy.m"; path = "../SVGRenderer-macOS/SVGRenderer-macOS-dummy.m"; sourceTree = "<group>"; };
 		BE52857724BB70193D0FC8920B8B6237 /* SVGRenderer-iOS-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "SVGRenderer-iOS-prefix.pch"; sourceTree = "<group>"; };
-		CBB284FC1A4C24EC9C72BBFFA5F076B1 /* GraphicsRenderer.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = GraphicsRenderer.framework; path = "GraphicsRenderer-macOS.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
+		CBB284FC1A4C24EC9C72BBFFA5F076B1 /* GraphicsRenderer.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = GraphicsRenderer.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		CD913F894ECA95D53FC9BD1B5B58EAED /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.13.sdk/System/Library/Frameworks/Cocoa.framework; sourceTree = DEVELOPER_DIR; };
 		CE3197EAB2648E73BD555BF0FEA418A4 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		CECCA09F64DF44E477923DDA79FA6EE8 /* SVGRenderer-macOS-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "SVGRenderer-macOS-umbrella.h"; path = "../SVGRenderer-macOS/SVGRenderer-macOS-umbrella.h"; sourceTree = "<group>"; };
@@ -158,7 +161,7 @@
 		F3E76E9CC994BD3D81A0136308F34932 /* SVGRenderer.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = SVGRenderer.swift; path = SVGRenderer/Classes/SVGRenderer.swift; sourceTree = "<group>"; };
 		F501AB55FBECC438618875F80E450480 /* GraphicsRenderer-iOS-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "GraphicsRenderer-iOS-dummy.m"; sourceTree = "<group>"; };
 		F75ABC16D8FCAF4C6D35A655EE355A82 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		FC884C47F4ECA7E8F97A09A9D84BC794 /* Pods_iOSRenderer.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_iOSRenderer.framework; path = "Pods-iOSRenderer.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
+		FC884C47F4ECA7E8F97A09A9D84BC794 /* Pods_iOSRenderer.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_iOSRenderer.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -218,10 +221,11 @@
 		23B6CE24BD86B32F2FA92BA68A33DBF7 /* SVGRenderer */ = {
 			isa = PBXGroup;
 			children = (
+				F3E76E9CC994BD3D81A0136308F34932 /* SVGRenderer.swift */,
+				541F6CAF20891D510069A168 /* SVGContext.swift */,
 				2B201806EEBE6997BBBBB21F6B4EA2B5 /* BezierPath+SVGContext.swift */,
 				ACA21F5DE8B299B67D3E4B7B992163F7 /* BezierPath+SVGString.swift */,
 				E02FD54884415C0D3458ADAF434CA437 /* Platforms.swift */,
-				F3E76E9CC994BD3D81A0136308F34932 /* SVGRenderer.swift */,
 				BB637FD94E077DE569FE854D23BFC20E /* Pod */,
 				249734337E833D36CD39DB8F38F5882B /* Support Files */,
 			);
@@ -401,7 +405,6 @@
 				B857851D9033445D2EF8C184130D8E72 /* RendererDrawable.swift */,
 				CAFC3DA44C1DB0A439C0CCDD362DA678 /* Support Files */,
 			);
-			name = GraphicsRenderer;
 			path = GraphicsRenderer;
 			sourceTree = "<group>";
 		};
@@ -629,6 +632,7 @@
 				77042C82F4A7192401EB8CECA44E438E /* Platforms.swift in Sources */,
 				82D43F95AEF4BE66BCA7E61CE1AD054F /* SVGRenderer-iOS-dummy.m in Sources */,
 				07ACDD98AD8F3D17979867E2A858B59C /* SVGRenderer.swift in Sources */,
+				541F6CB020891D510069A168 /* SVGContext.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -662,6 +666,7 @@
 				E45A8F8341F8B687749B649EDE918347 /* Platforms.swift in Sources */,
 				B8256DFDB9ACB2D272E11CD567C2C693 /* SVGRenderer-macOS-dummy.m in Sources */,
 				BB0FF2E006E3B0335E6B931B2F060052 /* SVGRenderer.swift in Sources */,
+				541F6CB120891D510069A168 /* SVGContext.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

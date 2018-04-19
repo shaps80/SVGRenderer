@@ -9,7 +9,8 @@
 
 import UIKit
 
-extension UIBezierPath: SVGContext {
+extension UIBezierPath {
+    
     public func line(to point: CGPoint) {
         addLine(to: point)
     }
@@ -43,6 +44,27 @@ extension UIBezierPath: SVGContext {
 import AppKit
 
 public extension NSBezierPath {
+
+    convenience init(cgPath: CGPath) {
+        self.init()
+
+        cgPath.forEach { element in
+            let points = UnsafeBufferPointer(start: element.points, count: 3)
+
+            switch element.type {
+            case .moveToPoint:
+                self.move(to: points[0])
+            case .addLineToPoint:
+                self.line(to: points[0])
+            case .addCurveToPoint:
+                self.curve(to: points[0], controlPoint1: points[1], controlPoint2: points[2])
+            case .addQuadCurveToPoint:
+                self.quadCurve(to: points[0], controlPoint: points[1])
+            case .closeSubpath:
+                self.close()
+            }
+        }
+    }
     
     var cgPath: CGPath {
         let path = CGMutablePath()
@@ -67,7 +89,7 @@ public extension NSBezierPath {
     
 }
 
-extension NSBezierPath: SVGContext {
+extension NSBezierPath {
     
     public func apply(_ transform: CGAffineTransform) {
         let t = AffineTransform(m11: transform.a, m12: transform.b, m21: transform.c, m22: transform.d, tX: transform.tx, tY: transform.ty)
@@ -96,3 +118,28 @@ extension NSBezierPath: SVGContext {
 }
 
 #endif
+
+extension BezierPath {
+
+    public func append(_ shape: CAShapeLayer) {
+        guard let cgPath = shape.path else { return }
+        let path = BezierPath()
+        path.append(cgPath)
+
+        let pattern = shape.lineDashPattern?.compactMap { CGFloat($0.floatValue) } ?? []
+        path.setLineDash(pattern, count: pattern.count, phase: shape.lineDashPhase)
+
+        path.usesEvenOddFillRule = shape.fillRule == kCAFillRuleEvenOdd
+        path.lineCapStyle = CGLineCap(rawValue: shape.lineCap).platform
+        path.lineJoinStyle = CGLineJoin(rawValue: shape.lineJoin).platform
+        path.lineWidth = shape.lineWidth
+        path.miterLimit = shape.miterLimit
+    }
+
+    public func append(_ cgPath: CGPath?) {
+        guard let cgPath = cgPath else { return }
+        let path = BezierPath(cgPath: cgPath)
+        append(path)
+    }
+
+}

@@ -26,8 +26,8 @@
     public typealias Screen = NSScreen
 
     extension NSScreen {
-        public static var main: NSScreen {
-            return self.main
+        public static var mainScreen: NSScreen {
+            return self.main!
         }
 
         public var scale: CGFloat {
@@ -48,6 +48,12 @@
     import UIKit
     public typealias Image = UIImage
     public typealias Screen = UIScreen
+
+    extension UIScreen {
+        public static var mainScreen: UIScreen {
+            return .main
+        }
+    }
     
     extension UIImage {
         internal func pngRepresentation() -> Data? {

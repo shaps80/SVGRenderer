@@ -34,7 +34,7 @@ extension CGPath {
     }
     
     /// Call the given closure on each element of the path.
-    private func forEach(_ body: @escaping (CGPathElement) -> Void) {
+    internal func forEach(_ body: @escaping (CGPathElement) -> Void) {
         var info = body
         self.apply(info: &info) { (infoPtr, elementPtr) in
             let opaquePtr = OpaquePointer(infoPtr!)

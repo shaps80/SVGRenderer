@@ -43,30 +43,6 @@ public final class SVGRendererFormat: RendererFormat {
     
 }
 
-public protocol SVGContext {
-    func move(to point: CGPoint)
-    func line(to point: CGPoint)
-    
-    func curve(to endPoint: CGPoint, controlPoint1: CGPoint, controlPoint2: CGPoint)
-    func quadCurve(to endPoint: CGPoint, controlPoint: CGPoint)
-    func arc(withCenter center: CGPoint, radius: CGFloat, startAngle: CGFloat, endAngle: CGFloat, clockwise: Bool)
-
-    func close()
-    func apply(_ transform: CGAffineTransform)
-    
-    var lineWidth: CGFloat { get set }
-    var lineCapStyle: LineCapStyle { get set }
-    var lineJoinStyle: LineJoinStyle { get set }
-    var miterLimit: CGFloat { get set }
-    var usesEvenOddFillRule: Bool { get set }
-    
-    func setLineDash(_ pattern: UnsafePointer<CGFloat>?, count: Int, phase: CGFloat)
-    
-    func append(_ bezierPath: BezierPath)
-    func appendRect(_ rect: CGRect)
-    func appendOval(in rect: CGRect)
-}
-
 /**
  *  Represents a new SVG renderer context
  */
@@ -76,14 +52,16 @@ public final class SVGRendererContext: RendererContext {
     public let format: SVGRendererFormat
     
     /// The associated CGContext
-    public let cgContext: SVGContext
+    public var cgContext: SVGContext {
+        return svgContext
+    }
+
+    public let svgContext: SVGContext
     
     /// Returns a UIImage representing the current state of the renderer's CGContext
     public var currentImage: Image {
         return ImageRenderer(bounds: format.bounds).image { [weak self] context in
-            guard let path = self?.cgContext as? BezierPath else { fatalError() }
-            path.fill()
-            path.stroke()
+            self?.svgContext.render(in: context.cgContext)
         }
     }
     
@@ -97,7 +75,7 @@ public final class SVGRendererContext: RendererContext {
      */
     internal init(format: SVGRendererFormat, cgContext: SVGContext) {
         self.format = format
-        self.cgContext = cgContext
+        self.svgContext = cgContext
     }
     
 }
@@ -111,9 +89,16 @@ public final class SVGRenderer: Renderer {
     public typealias Context = SVGRendererContext
     
     public let format: SVGRendererFormat
-    
+    internal let viewBox: CGRect
+
     public init(bounds: CGRect) {
         self.format = SVGRendererFormat(bounds: bounds)
+        self.viewBox = bounds
+    }
+    
+    public init(size: CGSize, viewBox: CGRect) {
+        self.format = SVGRendererFormat(bounds: CGRect(origin: .zero, size: size))
+        self.viewBox = viewBox
     }
     
     /**
@@ -132,7 +117,7 @@ public final class SVGRenderer: Renderer {
     }
     
     public func svgString(actions: (Context) -> Void) -> String {
-        let svgContext = BezierPath(rect: .zero)
+        let svgContext = SVGContext(id: nil, class: nil)
         let context = Context(format: format, cgContext: svgContext)
         actions(context)
         let viewBox = "\(format.bounds.minX) \(format.bounds.minY) \(format.bounds.width) \(format.bounds.height)"
@@ -140,8 +125,8 @@ public final class SVGRenderer: Renderer {
         
         return """
         <svg width="\(format.bounds.width)px" height="\(format.bounds.height)px" viewBox="\(viewBox)" xmlns="http://www.w3.org/2000/svg">
-        <!-- Generator: SVGRenderer (1.0.0) - http://github.com/shaps80/SVGRenderer -->
-        <path fill="#7F7F7F" fill-rule="\(fillRule)" d=\"\(svgContext.cgPath.svgString())\"></path>
+        <!-- Generator: SVGRenderer (1.1.0) - http://github.com/shaps80/SVGRenderer -->
+        <path fill="#7F7F7F" fill-rule="\(fillRule)" d=\"\(svgContext.path.cgPath.svgString())\"></path>
         </svg>
 
         """

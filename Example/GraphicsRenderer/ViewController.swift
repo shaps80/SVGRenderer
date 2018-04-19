@@ -31,8 +31,8 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         
         let string = SVGRenderer(size: CGSize(width: 50, height: 50)).svgString { context in
-            let path = context.cgContext
-            
+            let path = BezierPath()
+
             path.move(to: CGPoint(x: 12, y: 19.5))
             path.curve(to: CGPoint(x: 20.08, y: 13.63), controlPoint1: CGPoint(x: 12, y: 19.5), controlPoint2: CGPoint(x: 20.08, y: 13.63))
             path.line(to: CGPoint(x: 17, y: 4.12))
@@ -46,6 +46,18 @@ class ViewController: UIViewController {
             path.line(to: CGPoint(x: 12, y: 19.5))
             path.line(to: CGPoint(x: 12, y: 19.5))
             path.close()
+
+            context.svgContext.append(path)
+
+            context.svgContext.group(id: "head") { context in
+                context.lineCapStyle = .butt
+                context.strokeColor = Color.red
+                context.lineWidth = 2
+                context.fillColor = Color.blue
+
+                let path = BezierPath(rect: CGRect(x: 0, y: 0, width: 20, height: 20))
+                context.append(path)
+            }
         }
         
         print(string)
